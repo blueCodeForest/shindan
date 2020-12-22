@@ -5,6 +5,8 @@ const app = express();
 // パス指定用モジュール
 const path = require('path');
 
+// 環境変数(process.env.PORT)でイケるところか、PORT3000で設定
+const port = process.env.PORT || 3000;
 
 // 静的ファイルのルーティング
 app.use(express.static(path.join(__dirname, 'public')));
@@ -15,6 +17,6 @@ app.use((req, res) => {
 });
 
 // ポート指定で接続
-app.listen(3000, () => {
-  console.log('Running at Port 3000...');
+app.listen(port, () => {
+  console.log(`listening on ${port}`);
 });
