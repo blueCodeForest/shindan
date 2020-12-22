@@ -24,6 +24,10 @@ body {
   margin-bottom: 16px;
 }
 
+.hidden {
+  display: none;
+}
+
 .agree , .against {
   display: block;
   background: #f0f0f0;

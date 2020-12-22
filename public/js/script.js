@@ -1,8 +1,8 @@
 'use strict';
 
-const APP_PATH = `/`; // https://ユーザー名.github.io/<ココ> or ルートパス利用なら`/`だけでOK
+const APP_PATH = `/`;
 let auth0 = null;
-const fetchAuthConfig = () => fetch("auth_config.json"); // auth_config.json読み込み
+const fetchAuthConfig = () => fetch("../auth_config.json"); // auth_config.json読み込み
 
 const configureClient = async () => {
   const response = await fetchAuthConfig();
@@ -43,25 +43,10 @@ window.onload = async () => {
 const updateUI = async () => {
   const isAuthenticated = await auth0.isAuthenticated();
 
-  document.getElementById("btn-logout").disabled = !isAuthenticated;
-  document.getElementById("btn-login").disabled = isAuthenticated;
-
   // NEW - add logic to show/hide gated content after authentication
   if (isAuthenticated) {
     document.getElementById("gated-content").classList.remove("hidden");
-
-    document.getElementById(
-      "ipt-access-token"
-    ).innerHTML = await auth0.getTokenSilently();
-
-    document.getElementById("ipt-user-profile").innerHTML = JSON.stringify(
-      await auth0.getUser()
-    );
-
-    //プロフ画像
-    const profile = await auth0.getUser();
-    document.getElementById("ipt-user-profile-image").src = profile.picture;
-
+    console.log("ログインできました")
   } else {
     document.getElementById("gated-content").classList.add("hidden");
   }
