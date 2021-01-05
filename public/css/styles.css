@@ -4,9 +4,30 @@ body {
   font-family: Verdana, sans-serif;
 }
 
+img {
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+}
+
+p {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 1em;
+    margin-inline-start: 10px;
+    margin-inline-end: 0px;
+}
+
+ul {
+  list-style: circle;
+  padding-left: 20px;
+}
+
 #main-container {
   background: #fff;
   max-width: 500px;
+  min-width: 90%;
   margin: 8px auto;
   border-radius: 4px;
   padding: 16px;
@@ -24,8 +45,39 @@ body {
   margin-bottom: 16px;
 }
 
-.hidden {
-  display: none;
+#myChart {
+  margin: auto;
+}
+
+.box{
+  position: relative;
+  margin: 15px 0;
+}
+.box_inner{
+  padding: .5em;
+}
+.box::before,
+.box::after{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    -45deg,
+    #fff 25%, #d8e0ff 25%,
+    #d8e0ff 50%, #fff 50%,
+    #fff 75%, #d8e0ff 75%,
+    #d8e0ff
+  );
+  background-size: 8px 8px;
+}
+.box h2{
+  margin: 10px;
+}
+.box h2:first-letter{
+  font-family: "源柔ゴシック Heavy", sans-serif;
+  font-size: 1.4em;
+  color: #0094D6;
 }
 
 .agree , .against {
@@ -106,8 +158,9 @@ body {
   background-color: gray;
 }
 
-#btn {
+.btn {
   background: #3498db;
+  margin-bottom: 10px;
   padding: 8px;
   border-radius: 4px;
   cursor: pointer;
@@ -116,8 +169,29 @@ body {
   box-shadow: 0 4px 0 #2880b9;
 }
 
-#btn.disabled {
-  background: #ccc;
-  box-shadow: 0 4px 0 #bbb;
-  opacity: 0.7;
+.chart-container {
+  position: relative;
+  max-width: 90%;
+}
+
+.titleName {
+  text-align: center;
+  margin: 5px;
+}
+
+.firstCheck {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px;
+  color: red;
+}
+
+.firstCheck:before{
+	content:"";
+	display:inline-block;
+	width:1em;
+	height:1em;
+	background:url(../images/heart-icon.png) no-repeat;
+	background-size:contain;
 }
