@@ -21,7 +21,7 @@
       'Q1': '赤ちゃんからもう一度人生をやり直したとしても、今の人生とそう変わらないだろう',
       'Q2': '欠点を痛感しても、自分はダメなやつだと落ち込むことはほとんどない',
       'Q3': 'うまくいかないこともあるけれど、おおむね今の自分に満足している',
-      'Q4': '優秀な人を見ても、尊敬の念を抱くことはあれど、劣等感を感じることはない',
+      'Q4': '優秀な人を見て、尊敬の念を抱くことはあれど、劣等感を感じることはない',
       'Q5': '根拠はないけれど、このさき何が起こってもなんとかなるような気がする'
     }, 'positive',
     {
@@ -219,6 +219,13 @@
   };
 
   function checkScore() {
+    // 最初はスコアのチェックをしない
+    if (currentNum === 0) {
+      setQuestions();
+      return
+    }
+
+    // 5つの質問に答えてるかチェックする
     const checkedAnswers = container.querySelectorAll('.choosed');
     if (checkedAnswers.length === 5) {
       checkedAnswers.forEach(e => {
@@ -238,17 +245,17 @@
           score[currentType] -= 1;
           score['sum'] -= 2;
         }
-      })
+    })
+    // 最後の質問に答えたら、結果を表示する
+    if (currentNum === questions.length) {
+      displayResult();
     } else {
-      alert('未回答の質問があるよ！');
-      scrollTo(0, 0);
+      setQuestions();
     }
+  } else {
+    alert('未回答の質問があるよ！');
+  }
 
-      if (currentNum === questions.length) {
-        displayResult();
-      } else {
-        setQuestions();
-      }
 
   };
 
