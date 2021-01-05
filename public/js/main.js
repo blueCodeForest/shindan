@@ -220,7 +220,7 @@
 
   function checkScore() {
     const checkedAnswers = container.querySelectorAll('.choosed');
-    // if (checkedAnswers.length === 5) {　開発中はめんどくさいのでコメントアウト
+    if (checkedAnswers.length === 5) {
       checkedAnswers.forEach(e => {
         if(e.classList.contains('agree')) {
           score[currentType] += 1;
@@ -239,6 +239,10 @@
           score['sum'] -= 2;
         }
       })
+    } else {
+      alert('未回答の質問があるよ！');
+      scrollTo(0, 0);
+    }
 
       if (currentNum === questions.length) {
         displayResult();
@@ -246,10 +250,6 @@
         setQuestions();
       }
 
-    // } else {
-    //   alert('未回答の質問があるよ！');
-    //   scrollTo(0, 0);
-    // }　開発中はめんどくさいのでコメントアウト
   };
 
   function displayResult() {
