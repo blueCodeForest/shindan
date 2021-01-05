@@ -26,8 +26,8 @@ ul {
 
 #main-container {
   background: #fff;
-  max-width: 500px;
-  min-width: 90%;
+  max-width: 450px;
+  min-width: 300px;
   margin: 8px auto;
   border-radius: 4px;
   padding: 16px;
